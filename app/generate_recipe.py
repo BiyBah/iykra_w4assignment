@@ -19,10 +19,10 @@ def generate_recipe(user_text):
     # Load environment variables
     gemini_api_key = 'AIzaSyAlbj87lJSG7qeTzdy7lqkvwinFdjoZyc8'
     
-    if not gemini_api_key:
-        return {"error": "API key not found. Please set the GOOGLE_API_KEY in the .env file."}
+    # if not gemini_api_key:
+    #     return {"error": "API key not found. Please set the GOOGLE_API_KEY in the .env file."}
     
-    genai.configure(api_key=gemini_api_key)
+    genai.configure(api_key='AIzaSyAlbj87lJSG7qeTzdy7lqkvwinFdjoZyc8')
 
     # Check if the user has provided input
     if not user_text or len(user_text.strip()) < 1:
