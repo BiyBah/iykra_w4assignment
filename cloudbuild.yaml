@@ -30,16 +30,16 @@ steps:
       kubectl apply -f kubernetes/service.yaml
       kubectl apply -f kubernetes/deployment.yaml
 
-  # Secrets
-  - name: python:slim
-    entrypoint: python
-    args: ['generate_recipe.py']
-    secretEnv: ['GOOGLE_API_KEY']
+#   # Secrets
+#   - name: python:slim
+#     entrypoint: python
+#     args: ['app/generate_recipe.py']
+#     secretEnv: ['GOOGLE_API_KEY']
 
-availableSecrets:
-  secretManager:
-    - versionName: projects/b-508911/secrets/GOOGLE_API_KEY/versions/1
-      env: 'GOOGLE_API_KEY'
+# availableSecrets:
+#   secretManager:
+#     - versionName: projects/b-508911/secrets/GOOGLE_API_KEY/versions/1
+#       env: 'GOOGLE_API_KEY'
 
 images:
   - 'gcr.io/b-508911/recipe-gen:latest'
