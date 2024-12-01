@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: recipe_gen-deployment
+  name: recipe-gen-deployment
   labels:
-    app: recipe_gen
+    app: recipe-gen
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: recipe_gen
+      app: recipe-gen
   template:
     metadata:
       labels:
-        app: recipe_gen
+        app: recipe-gen
     spec:
       containers:
-      - name: recipe_gen
-        image: gcr.io/b-508911/recipe_gen:latest
+      - name: recipe-gen
+        image: gcr.io/b-508911/recipe-gen:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
