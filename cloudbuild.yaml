@@ -1,0 +1,45 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--no-cache', '-t', 
+           'gcr.io/b-508911/recipe_gen:latest', 
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+           'gcr.io/b-508911/recipe_gen:latest']
+
+  # Authenticate GKE
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args: 
+    - '-c'
+    - |
+      gcloud container clusters get-credentials w4assignment-cluster --zone us-central1 --project b-508911
+
+  # Deploy to Cloud GKE
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args: 
+    - '-c'
+    - |
+      kubectl apply -f kubernetes/service.yaml
+      kubectl apply -f kubernetes/deployment.yaml
+
+    # Secrets
+    - name: python:slim
+      entrypoint: python
+      args: ['generate_recipe.py']
+      secretEnv: ['GOOGLE_API_KEY']
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/b-508911/secrets/GOOGLE_API_KEY/versions/1
+      env: 'GOOGLE_API_KEY'
+
+images:
+  - 'gcr.io/b-508911/recipe_gen:latest'
