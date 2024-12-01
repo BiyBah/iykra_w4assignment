@@ -19,7 +19,7 @@ Aplikasi pembuat resep sederhana dengan memanfaatkan Gemini API
 10. Buat cloudbuild.yaml, service.yaml dan deployment.yaml
 11. git add, commit dan push ke main
 12. Setelah cloudbuild selesai, cek eksteral IP di kubectl get services
-13. Prompt message menggunakan curl -X POST http://(eksternall-ip)/generate-recipe -H "Content-Type: application/json" -d '{"user_text": "beef rendang"}
+13. Prompt message menggunakan curl -X POST http://34.57.245/134/generate-recipe -H "Content-Type: application/json" -d '{"user_text": "beef rendang"}
 
 Berikut hasilnya: 
 ![Hasil](./result.png)
