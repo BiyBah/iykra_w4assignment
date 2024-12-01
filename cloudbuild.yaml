@@ -38,7 +38,7 @@ steps:
 
 availableSecrets:
   secretManager:
-    - versionName: projects/791022737244/secrets/GOOGLE_API_KEY/versions/1
+    - versionName: projects/b-508911/secrets/GOOGLE_API_KEY/versions/1
       env: 'GOOGLE_API_KEY'
 
 images:
