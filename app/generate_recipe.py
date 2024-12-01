@@ -17,7 +17,7 @@ def generate_recipe(user_text):
     """
     
     # Load environment variables
-    gemini_api_key = 'AIzaSyAlbj87lJSG7qeTzdy7lqkvwinFdjoZyc8'
+    # gemini_api_key = 'AIzaSyAlbj87lJSG7qeTzdy7lqkvwinFdjoZyc8'
     
     # if not gemini_api_key:
     #     return {"error": "API key not found. Please set the GOOGLE_API_KEY in the .env file."}
