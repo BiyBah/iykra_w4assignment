@@ -5,13 +5,13 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '--no-cache', '-t', 
-           'gcr.io/b-508911/recipe_gen:latest', 
+           'gcr.io/b-508911/recipe-gen:latest', 
            '.']
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 
-           'gcr.io/b-508911/recipe_gen:latest']
+           'gcr.io/b-508911/recipe-gen:latest']
 
   # Authenticate GKE
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -42,4 +42,4 @@ availableSecrets:
       env: 'GOOGLE_API_KEY'
 
 images:
-  - 'gcr.io/b-508911/recipe_gen:latest'
+  - 'gcr.io/b-508911/recipe-gen:latest'
